@@ -5,10 +5,11 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemyPrefab;
+    public static bool keepSpawning = true;
     private float spawnRangeX = 8.0f;
     private float spawnPosZ = 0f;
     private float startDelay = 2f;
-    private float spawnInterval = 1.0f; //decreases as the intensity increases for Game Mechanics
+    private float spawnInterval = 0.5f; //decreases as the intensity increases for Game Mechanics
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,10 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!keepSpawning)
+        {
+            CancelInvoke("SpawnRandomEnemy");
+        }
     }
 
     void SpawnRandomEnemy()

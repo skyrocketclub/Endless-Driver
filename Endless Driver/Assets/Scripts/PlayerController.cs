@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Heart Collected...");
             Destroy(other.gameObject);
+            GameManager.lives += 1;
         }
         else if (other.gameObject.CompareTag("Music"))
         {
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("You hit an Enemy...");
+            GameManager.lives -=1;
         }
     }
 }
