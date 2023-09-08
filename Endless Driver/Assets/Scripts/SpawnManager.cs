@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeX = 8.0f;
     private float spawnPosZ = 0f;
     private float startDelay = 3f;
-    private float spawnInterval = 0.5f; //decreases as the intensity increases for Game Mechanics
+    private float spawnInterval = 1.0f; //decreases as the intensity increases for Game Mechanics
 
     // Start is called before the first frame update
     void Start()

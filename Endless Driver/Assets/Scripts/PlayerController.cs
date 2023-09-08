@@ -39,8 +39,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Music"))
         {
-            Debug.Log("Music Collected...");
             Destroy(other.gameObject);
+            Debug.Log("Music Collected...");
+            PlayRandomMusic.changeMusic = true;
         }
     }
 
