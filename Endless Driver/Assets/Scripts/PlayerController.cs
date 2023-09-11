@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float xRange = 8.0f;
     public float speed = 5.0f;
-    
+    public GameObject flame;
+    public ParticleSystem particleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +40,15 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Music"))
         {
-            Destroy(other.gameObject);
             Debug.Log("Music Collected...");
             PlayRandomMusic.changeMusic = true;
+            Destroy(other.gameObject);
+        }else if (other.gameObject.CompareTag("Powerup"))
+        {
+            Debug.Log("Powerup Collected...");
+            GameManager.hasPowerup = true;
+            Destroy(other.gameObject);
+            flame.gameObject.SetActive(true);
         }
     }
 
@@ -49,8 +56,20 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("You hit an Enemy...");
-            GameManager.lives -=1;
+            if(GameManager.hasPowerup == true)
+            {
+                //Player destroys enemy vehicles if he has Power up...
+                Debug.Log("You hit an Enemy and you destroyed him...");
+                GameManager.hasPowerup = false;
+                Destroy(collision.gameObject);
+                flame.gameObject.SetActive(false);
+                particleSystem.Play();
+            }
+            else
+            {
+                Debug.Log("You hit an Enemy...");
+                GameManager.lives -= 1;
+            }
         }
     }
 }

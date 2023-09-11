@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private string formattedTime;
     public static bool timerActive = false;
     public static int lives;
+    public static bool hasPowerup = false;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI durationText;

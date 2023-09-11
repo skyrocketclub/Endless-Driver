@@ -435,6 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d930e4619b4aa7542978072f9a1d10fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 37.4
   enemySoundTrack: {fileID: 8300000, guid: e85b53c57b959b6438f97095e630ee92, type: 3}
 --- !u!54 &3809788432358969169
 Rigidbody:
@@ -496,7 +497,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0

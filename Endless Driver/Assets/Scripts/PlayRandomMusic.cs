@@ -6,7 +6,7 @@ using TMPro;
 public class PlayRandomMusic : MonoBehaviour
 {
     private AudioSource audioSource;
-    public int musicIndex;
+    public int musicIndex = 0;
     public AudioClip[] soundTracks;
     public static bool changeMusic = false;
     public static bool changeIncomingTrack = false;

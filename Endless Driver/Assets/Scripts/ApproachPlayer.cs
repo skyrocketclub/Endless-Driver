@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApproachPlayer : MonoBehaviour
 {
-    private float speed = 30.0f;
+    public float speed = 30.0f;
     private float destroyBoundary = 90.0f;
     public AudioClip enemySoundTrack;
     private AudioSource audioSource;
