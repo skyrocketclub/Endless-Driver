@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     private float startTime;
     private string formattedTime;
+    public static int score;
     public static bool timerActive = false;
     public static int lives;
     public static bool hasPowerup = false;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI durationText;
+    public TextMeshProUGUI scoreText;
     public GameObject spawnManager;
     public GameObject gameOverCanvas;
 
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
         timerActive = true;
         startTime = Time.time;
         lives = 3;
+      
     }
 
     // Update is called once per frame
@@ -43,6 +47,10 @@ public class GameManager : MonoBehaviour
 
         formattedTime = string.Format("{0:D2} : {1:D2} : {2:D2} ", hours, minutes, seconds);
         timeText.text = formattedTime;
+        UpdateScore();
+        ApproachPlayer.speed += 0.01f;
+        //SpawnManager.spawnInterval -= 0.05f;
+       // Debug.Log(SpawnManager.spawnInterval);
     }
 
     private void UpdateLives()
@@ -77,5 +85,24 @@ public class GameManager : MonoBehaviour
         SpawnManager.keepSpawning = false;
         gameOverCanvas.gameObject.SetActive(true);
         durationText.text = "Duration: " + formattedTime;
+    }
+
+    private void UpdateScore()
+    {
+        scoreText.text = "Score: " + score.ToString();
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        spawnManager.gameObject.SetActive(true);
+        SpawnManager.restartSpawning = true;
+        SpawnManager.keepSpawning = true;
+        score = 0;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
